@@ -109,7 +109,7 @@
 }
 .card:hover {
   cursor: pointer;
-  transform: scale(1.07);
+  transform: scale(1.03);
   box-shadow: 0px 0px 8px rgb(172 172 172 / 50%);
 }
 .polaroid{
@@ -132,9 +132,6 @@
   margin: 5px 0 0 0;
   font-size: 25px;
   font-weight: 500;
-}
-.actorName span {
-	/* background: linear-gradient(0deg, #ffb6b9 50%, transparent 50%) */
 }
 
 
@@ -189,4 +186,28 @@ text-align: center;
 .age {
   margin: 10px 0 0 0;
   font-size: 15px;
+}
+
+.btn {
+  font-size: 18px;
+  font-family: 'Hahmlet', serif;
+  margin: 0 3px 10px 0;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #bbded6;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease 0s;
+  padding: 5px;
+}
+
+.btn:hover {
+  background-color: #fae3d9;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 1px 3px 5px rgb(0 0 0 / 20%);
+}
+.selected{
+	border: #ffb6b9 solid 4px;
 }

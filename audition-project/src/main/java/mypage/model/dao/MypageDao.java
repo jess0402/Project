@@ -1557,5 +1557,24 @@ public class MypageDao {
 		}
 		return video;
 	}
+
+	public int deleteWishActors(Connection conn, String memberId, int no) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteWishActors");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, no);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			throw new MypageException("deleteWishActors@ 내가 찜한 배우 삭제오류!", e);
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 }

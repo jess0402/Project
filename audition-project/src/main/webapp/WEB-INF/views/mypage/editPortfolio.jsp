@@ -63,8 +63,8 @@
             <th rowspan="9" id="img-th">대표사진</th>
             <td rowspan="9">
               <div id="profile-img-container">
-                <img src="<%= img_src %>" id="profile-img">
-              </div>              
+                <img src="<%= img_src %>" id="profile-img">              
+              </div>
               <input type="button" name="btn-delFile" class="del-btn" id="delFile" value="삭제" onclick="fileDelete(this);"/>
               <input type="file" name="profilePic" id="profilePic" accept="image/*" onchange="loadImage(this);" style="display: none;">
             </td>

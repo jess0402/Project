@@ -41,31 +41,33 @@
       </div>
       <div id="updown-container">
       <% if(list != null && !list.isEmpty()){
-			long miliseconds = System.currentTimeMillis();
-			Date today = new Date(miliseconds); 
+    		long miliseconds = System.currentTimeMillis();
+    	    Date today = new Date(miliseconds);
 			for(int i = 0; i < list.size(); i++){ 
+				if(list.get(i).getAnnEndDate().after(today)){
 		%>
-        <div class="card">
-          <div class="card-header">
-            모집중
-          </div>
-          <div class="card-body">
-            <div id="card-body-top">
-              <h5 class="card-title"><%= list.get(i).getAnnTitle() %></h5>
-              <p class="card-text"><%= list.get(i).getAnnRegDate() %> ~ <%= list.get(i).getAnnEndDate() %></p>
-            </div>
-            <div id="btn-div">
-              <a 
-              	href="<%= request.getContextPath() %>/ann/annView?annNo=<%= list.get(i).getAnnNo() %>" 
-              	id="btnbtn" class="btn btn-primary">공고보러가기</a>
-            </div>
-          </div>
-        </div>
+				        <div class="card">
+				          <div class="card-header">
+				            모집중
+				          </div>
+				          <div class="card-body">
+				            <div id="card-body-top">
+				              <h5 class="card-title"><%= list.get(i).getAnnTitle() %></h5>
+				              <p class="card-text"><%= list.get(i).getAnnRegDate() %> ~ <%= list.get(i).getAnnEndDate() %></p>
+				            </div>
+				            <div id="btn-div">
+				              <a 
+				              	href="<%= request.getContextPath() %>/ann/annView?annNo=<%= list.get(i).getAnnNo() %>" 
+				              	id="btnbtn" class="btn btn-primary">공고보러가기</a>
+				            </div>
+				          </div>
+				        </div>
 
-              <% } %>
-		<% } else { %>
-			<div><p style="font-size: x-large;">조회된 공고가 없습니다.</p></div>
-		<% } %> 
+       	<% 	
+       				}
+				}
+      		}
+		%>
 		</div>
     </div>
       <div id="pagebar">

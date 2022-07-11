@@ -45,6 +45,7 @@ public class PortfolioServlet extends HttpServlet {
 				int attachNo = actorInfo.getAttachNo();
 				String fileName = mypageService.getRenamedFilename(attachNo);
 				String img_src = request.getContextPath() + "/upload/portfolio/" + fileName;
+				System.out.println("PortfolioServlet@img_src = " + img_src);
 				
 				request.setAttribute("img_src", img_src);
 				request.setAttribute("actorInfo", actorInfo);

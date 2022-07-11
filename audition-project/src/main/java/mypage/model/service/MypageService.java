@@ -700,6 +700,28 @@ public class MypageService {
 		return v;
 	}
 
+	public int deleteWishActors(String memberId, String[] deleteArr) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		try {
+			for(String no : deleteArr) {   
+//				System.out.println("현재 지울 배우 no = " + no);
+	            result = mypageDao.deleteWishActors(conn, memberId, Integer.parseInt(no));
+	            System.out.println(no + "번 배우찜 지우기 성공!");
+			}
+			commit(conn);
+			
+		} catch(Exception e) {
+			rollback(conn);
+		 	throw e;
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
 
 	
 }

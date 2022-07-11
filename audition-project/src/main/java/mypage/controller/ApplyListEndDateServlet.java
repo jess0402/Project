@@ -80,10 +80,10 @@ public class ApplyListEndDateServlet extends HttpServlet {
 				url += "?sortType=end_date";
 			}
 			
-			System.out.println("ApplyListServlet@list 길이 = " + list.size());
-			System.out.println("ApplyListServlet@list.get(0) = " + list.get(0));
-			System.out.println("ApplyListServlet@list.get(1) = " + list.get(1));
-			System.out.println("ApplyListServlet@list.get(2)" + list.get(2));
+//			System.out.println("ApplyListServlet@list 길이 = " + list.size());
+//			System.out.println("ApplyListServlet@list.get(0) = " + list.get(0));
+//			System.out.println("ApplyListServlet@list.get(1) = " + list.get(1));
+//			System.out.println("ApplyListServlet@list.get(2)" + list.get(2));
 
 			
 			

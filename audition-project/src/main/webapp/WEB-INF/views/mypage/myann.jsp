@@ -118,6 +118,7 @@
    });
 
    const annView = (ann) => {
+	   console.log("annview 실행");
       //const annNo = ann.firstElementChild.lastElementChild.value;
       const annNo = ann.currentTarget.firstElementChild.children.annNo.value;
       console.log(annNo);
