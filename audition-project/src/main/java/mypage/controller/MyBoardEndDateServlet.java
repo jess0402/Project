@@ -10,9 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.model.dto.Board;
 import common.HelloMvcUtils;
+import member.model.dto.Member;
 import mypage.model.service.MypageService;
 
 /**
@@ -28,10 +30,10 @@ public class MyBoardEndDateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		String memberId = request.getParameter("memberId");
-//		System.out.println("PwishListServlet@memberId = " + memberId);
+		HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute("loginMember");
+        String memberId = member.getMemberId();
 		
-		String memberId = "hosi";
 		
 		try {
 			

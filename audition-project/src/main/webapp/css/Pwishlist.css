@@ -176,3 +176,26 @@ p {
   font-size: 20px;
   color: #000000;
 }
+.btn {
+  font-size: 18px;
+  font-family: 'Hahmlet', serif;
+  margin: 0 3px 10px 0;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #bbded6;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease 0s;
+  padding: 5px;
+}
+
+.btn:hover {
+  background-color: #fae3d9;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 1px 3px 5px rgb(0 0 0 / 20%);
+}
+.selected{
+	border: #ffb6b9 solid 4px;
+}

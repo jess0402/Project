@@ -1577,4 +1577,23 @@ public class MypageDao {
 		return result;
 	}
 	
+	public int deleteWishAnns(Connection conn, int no, String memberId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteWishAnns");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, no);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			throw new MypageException("MypageDao@ 내 공고 삭제오류!", e);
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }

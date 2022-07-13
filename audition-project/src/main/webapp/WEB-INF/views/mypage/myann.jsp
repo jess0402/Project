@@ -53,7 +53,7 @@
         	</div>
         </div>
       </div>
-      <span id="selectMsg" style="display: none;">공고를 선택해주세요.</span>
+      <span id="selectMsg" style="display: none; font-size: x-large;">공고를 선택해주세요.</span>
       <div id="updown-container">
       <% if(list != null && !list.isEmpty()){
     	  
@@ -99,7 +99,6 @@
       <div id="options" style="display: none;">
         <button type="button" class="btn small-btn" onclick="delAnn();">삭제</button>
        	<button type="button" class="btn small-btn" onclick="editAnn();">수정</button>
-       	<button type="button" class="btn small-btn">마감처리</button>
       </div>
     </div>
 	<div id="pagebar">

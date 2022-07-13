@@ -722,6 +722,27 @@ public class MypageService {
 		return result;
 	}
 
+	public int deleteWishAnns(String[] deleteArr, String memberId) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		try {
+			for(String no : deleteArr) {   
+	            result = mypageDao.deleteWishAnns(conn, Integer.parseInt(no), memberId);
+	            System.out.println(no + "번 공고 지우기 성공!");
+			}
+			commit(conn);
+			
+		} catch(Exception e) {
+			rollback(conn);
+		 	throw e;
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
 
 	
 }
