@@ -88,7 +88,7 @@
 			}		
 	    } else {
 	%>
-		<p>찜한 공고가 없습니다.</p>
+		<p style="font-size: large;">찜한 공고가 없습니다.</p>
 		
 	<% } %>
       </div>

@@ -66,8 +66,10 @@
        	<% 	
        				}
 				}
-      		}
+      		} else {
 		%>
+			<p style="font-size: x-large;">지원한 공고가 없습니다.</p>
+		<% } %>
 		</div>
     </div>
       <div id="pagebar">

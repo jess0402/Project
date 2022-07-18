@@ -29,7 +29,6 @@
             <option value="default">처리상태</option>
             <option value="undo" <%="undo".equals(searchType) ? "selected" : ""%>>접수</option>
             <option value="ing" <%="ing".equals(searchType) ? "selected" : ""%>>처리중</option>
-            <option value="end" <%="end".equals(searchType) ? "selected" : ""%>>처리완료</option>
           </select>
         </div>
       </div>

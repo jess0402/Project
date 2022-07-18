@@ -109,7 +109,7 @@
 				} else {
 	  				applicants.forEach((actor, i) => {
 	
-	  				
+	  					
 	  					const actorLink = `<%= request.getContextPath() %>/actor/actorView?actorNo=\${actor.actorNo}`;
 	  					console.log(actorLink);
 	  				
@@ -130,7 +130,7 @@
 	  		                		<p>\${nvl(actor.birth)}</p>
 	  		                		<p id="p-phone">\${nvl(actor.phone)}</p>
 	  		                		<p>\${nvl(actor.email)}</p>
-	  		                		<a href="#">상세보기</a>
+	  		                		<a href="\${actorLink}">상세보기</a>
 	  		              		</div>
 	  		            	</div>`;			
 	  					div.insertAdjacentHTML('beforeend', wrap);			
