@@ -260,7 +260,7 @@
 
 2. <h3 id="reportList">신고내역 조회</h3>
 
-![신고내역 조회](https://user-images.githubusercontent.com/77372352/111767342-f5f28000-88e9-11eb-8c15-4cbdefed145a.gif)
+![신고내역 조회](audition-project/src/main/webapp/images/project-img/reportlist.gif)
 
   **관리자 마이페이지 - 신고내역 조회**
  
