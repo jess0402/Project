@@ -56,6 +56,7 @@ window.addEventListener('load', () => {
             <div class="nav-item"><a class="ahover" href="<%= request.getContextPath() %>/ann/annListAsync">공고찾기</a></div>
             <div class="nav-item"><a class="ahover" href="<%= request.getContextPath() %>/board/boardList">게시판</a></div>
 
+
              <% 
                 String url = "";
                 if(loginMember != null) {
