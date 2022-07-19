@@ -14,7 +14,8 @@
     </li>
     <li><a href="#구현-기능">구현 기능</a>
       <ul>
-        <li><a href="#portfolio">배우 마이페이지 - 포트폴리오 등록 CRUD</a></li>
+        <li><a href="#portfolio">배우 마이페이지 - 포트폴리오 배우정보 등록 CRUD</a></li>
+        <li><a href="#portfolio">배우 마이페이지 - 포트폴리오 경력 CRUD</a></li>
         <li><a href="#applyAnn">배우 마이페이지 - 지원한 공고 확인</a></li>
         <li><a href="#annWishlist">배우 마이페이지 - 공고 찜 목록</a></li>
         <li><a href="#myAnn">캐스팅 디렉터 마이페이지 - 내 공고 확인</a></li>
@@ -78,37 +79,39 @@
 
 ## 배우 마이페이지
 
- 1. <h3 id="portfolio">배우 포트폴리오 CRUD</h3>
+ 1. <h3 id="portfolio">포트폴리오 배우 정보 CRUD</h3>
 
 
 
   **배우 마이페이지 내 포트폴리오 메뉴**
-  * 포트폴리오 등록
+  * 포트폴리오 배우 정보 등록
   ![포트폴리오 등록](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/actorWishlist.gif?raw=true)
   
-  * 포트폴리오 수정
+  * 포트폴리오 배우 정보 수정
   ![포트폴리오 수정](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/edit_port.gif?raw=true)
    
   * 구현 기능 설명
     - 포트폴리오 등록
     - 포트폴리오 수정시엔 DB에 등록된 포트폴리오 내용 불러옴.
-    - 경력 등록시 저장 버튼을 누르면 비동기로 경력란에 방금 저장한 내용 추가됨.
-    - 경력 수정시엔 DB에 등록된 경력 내용 불러옴.
-    - 경력 삭제시에 뜨는 alert 창에서 확인 버튼을 누르면 비동기로 경력란에 해당 경력 내용 삭제됨.
-    - 
-    - 
-    - 공지사항 게시판 글 목록 조회
-    - 페이징을 통해 게시글 목록 넘기기
-    - 공지사항 | 이벤트 탭을 통해 페이지 이동 가능
-    - 관리자 회원만 글쓰기 가능
-    - 게시글 상세 조회 (제목, 내용, 날짜, 조회수)
-    - 관리자 회원만 수정/삭제 가능
-    - 목록으로 이동
+
 
 
 ------------
 
-2. <h3 id="applyAnn">지원한 공고 확인</h3>
+2. <h3 id="work">포트폴리오 경력 추가 & 삭제 </h3>
+
+   ![지원한 공고 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/applylist.gif?raw=true)
+
+**배우 마이페이지 내 지원한 공고 확인 메뉴**
+
+  * 구현 기능 설명   
+    - 경력 등록시 저장 버튼을 누르면 비동기로 경력란에 방금 저장한 내용 추가됨.
+    - 경력 수정시엔 DB에 등록된 경력 내용 불러옴.
+    - 경력 삭제시에 뜨는 alert 창에서 확인 버튼을 누르면 비동기로 경력란에 해당 경력 내용 삭제됨.
+    
+------------
+
+3. <h3 id="applyAnn">지원한 공고 확인</h3>
 
    ![지원한 공고 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/applylist.gif?raw=true)
 
@@ -123,9 +126,11 @@
     
 ------------
 
-3. <h3 id="annWishlist">공고 찜 목록</h3>
+4. <h3 id="annWishlist">공고 찜 목록</h3>
 
-![공고 찜 목록](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/annWishlist.gif?raw=true)
+  ![공고 찜 목록](https://github.com/jess0402/Project/blob/master/audition-project/src/main/webapp/images/project-img/annWishlist2.gif?raw=true)
+
+
 
   **배우 마이페이지 공고 찜 목록 메뉴**
  
@@ -143,7 +148,7 @@
 
 1. <h3 id="myAnn">내 공고 확인</h3>
 
-![내 공고 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/myAnn.gif?raw=true)
+  ![내 공고 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/myAnn.gif?raw=true)
 
 
   **캐스팅 디렉터 마이페이지 내 지원한 공고 확인 메뉴**
@@ -161,7 +166,7 @@
 
 2. <h3 id="applyActor">지원자 확인</h3>
 
-![지원자 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/applicant.gif?raw=true)
+  ![지원자 확인](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/applicant.gif?raw=true)
 
   **캐스팅 디렉터 마이페이지 내 지원자 확인 메뉴**
  
@@ -176,7 +181,7 @@
 
 3. <h3 id="companyInfo">담당자 정보 CRUD</h3>
 
-![담당자 정보](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/companyinfo.gif?raw=true)
+  ![담당자 정보](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/companyinfo.gif?raw=true)
 
   **캐스팅 디렉터 마이페이지 내 담당자 정보 메뉴**
  
@@ -192,7 +197,7 @@
 
 3. <h3 id="actorWishlist">배우 찜 목록</h3>
 
-![배우 찜 목록](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/actorWishlist.gif?raw=true)
+  ![배우 찜 목록](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/actorWishlist.gif?raw=true)
 
   **배우 마이페이지 공고 찜 목록 메뉴**
  
@@ -210,7 +215,7 @@
 
 1. <h3 id="myBoard">내가 쓴 게시글</h3>
 
-![내가 쓴 게시글](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/myboard.gif?raw=true)
+  ![내가 쓴 게시글](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/myboard.gif?raw=true)
 
 
   **마이페이지 공통기능 - 내가 쓴 게시글 메뉴**
@@ -229,7 +234,7 @@
   
 2. <h3 id="updateInfo">회원정보 수정</h3>
 
-![회원정보 수정](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/updateMember.gif?raw=true)
+  ![회원정보 수정](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/updateMember.gif?raw=true)
 
   **마이페이지 공통기능 - 회원정보 수정**
  
@@ -245,7 +250,7 @@
   
 3. <h3 id="deleteMember">회원 탈퇴</h3>
 
-![회원 탈퇴](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/deleteMember.gif?raw=true)
+  ![회원 탈퇴](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/deleteMember.gif?raw=true)
 
   **마이페이지 공통기능 - 회원 탈퇴**
  
@@ -263,7 +268,7 @@
 
 1. <h3 id="memberList">회원목록 조회</h3>
 
-![회원목록 조회](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/memberList.gif?raw=true)
+  ![회원목록 조회](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/memberList.gif?raw=true)
 
 
   **관리자 마이페이지 회원목록 조회 메뉴**
@@ -282,7 +287,7 @@
 
 2. <h3 id="reportList">신고내역 조회</h3>
 
-![신고내역 조회](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/reportList.gif?raw=true)
+  ![신고내역 조회](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/reportList.gif?raw=true)
 
   **관리자 마이페이지 - 신고내역 조회**
  
