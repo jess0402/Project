@@ -15,7 +15,7 @@
     <li><a href="#구현-기능">구현 기능</a>
       <ul>
         <li><a href="#portfolio">배우 마이페이지 - 포트폴리오 배우정보 등록 CRUD</a></li>
-        <li><a href="#">배우 마이페이지 - 포트폴리오 경력 CRUD</a></li>
+        <li><a href="#work">배우 마이페이지 - 포트폴리오 경력 CRUD</a></li>
         <li><a href="#applyAnn">배우 마이페이지 - 지원한 공고 확인</a></li>
         <li><a href="#annWishlist">배우 마이페이지 - 공고 찜 목록</a></li>
         <li><a href="#myAnn">캐스팅 디렉터 마이페이지 - 내 공고 확인</a></li>
@@ -85,7 +85,7 @@
 
   **배우 마이페이지 내 포트폴리오 메뉴**
   * 포트폴리오 배우 정보 등록
-  ![포트폴리오 등록](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/actorWishlist.gif?raw=true)
+  ![포트폴리오 등록](https://github.com/jess0402/Project/blob/master/audition-project/src/main/webapp/images/project-img/enroll_port.gif?raw=true)
   
   * 포트폴리오 배우 정보 수정
   ![포트폴리오 수정](https://github.com/jess0402/Project/blob/c2a39b1a2a1a0228cb1f6567f23ef6b339e084b1/audition-project/src/main/webapp/images/project-img/edit_port.gif?raw=true)
@@ -159,6 +159,7 @@
     - 내가 올린 공고 조회
     - 기본 정렬은 공고 등록 최신순이며, 마감순을 선택하면 마감이 임박한 공고부터 정렬됨.
     - 마감일이 지난 공고는 회색 처리됨.
+    - 공고등록을 누르면 공고 등록 페이지로 이동함.
     - 선택을 누른 뒤, 공고를 선택한 후 삭제를 누르면 내가 올린 공고가 삭제됨. 
     - 선택을 누른 뒤, 공고를 선택한 후 수정을 누르면 공고 수정 페이지로 이동함. 
     - 2개 이상의 공고를 선택한 뒤 수정을 누르면 수정은 한번에 한개의 공고만 가능하다는 알람이 뜸.
