@@ -63,7 +63,7 @@
   - 이은민 : 공고찾기 카테고리 CRUD
   - 장은성 : 배우 포트폴리오 CRUD, 마이페이지
   
-* 구현 기능
+* 나의 구현 기능
   - 배우 마이페이지 (배우 포트폴리오 CRUD, 지원한 공고)
   - 캐스팅 디렉터 마이페이지 (내 공고 확인, 지원자 확인, 담당자 정보 등록 및 수정) 
   - 마이페이지 공통기능 (내가 쓴 게시글, 찜 목록, 회원정보 수정, 탈퇴)
@@ -72,6 +72,9 @@
 
 * DB 설계<br>
 ![audition-project](https://raw.githubusercontent.com/jess0402/Project/master/audition-project/src/main/webapp/images/project-img/erd.png)
+
+* 일정<br>
+![audition-project]()
 
 ------------
 
