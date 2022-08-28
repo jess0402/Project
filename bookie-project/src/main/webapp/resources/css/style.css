@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: 'KOTRAHOPE';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'KOTRAHOPE';
+   	font-size: 18px;
+	margin:0 auto;
+	width: 800px;
+	background-color: #ffc36a;
+	padding: 0 !important;
+}
+
+/********** 전체컨테이너 **********/
+div#body-container	{
+	border-radius: 5px;
+	background-color: #FFF;
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+}
+
+/********** header **********/
+
+header div#header-container{
+   	font-size: 30px;
+	margin: 0 auto;
+	padding: 15px;
+	z-index: 1;
+	
+}
+
+header div#header-container .i-login{
+	font-size: 60px;
+	color: #FE9801;
+	float: right;
+	vertical-align:middle;
+	margin: 18px 10px;
+	text-shadow : 3px 3px 1px #CCDA46;
+}
+header div#header-container .i-login:hover{
+	color: #CCDA46 ;
+	cursor: pointer;
+	transform: scale(1.1);
+}
+header div#header-container img{
+	margin: 0 10px;
+	width: 100px;
+}
+header div#header-container img:hover{
+	cursor: pointer;
+	transform: scale(1.1);
+}
+header div#header-container img.sh-right{
+	float: right;
+}
+#logout-btn, .alarm-i{
+	float: right;
+	display: inline-block;
+}
+#logout-btn #logout-i, .alarm-i{
+	font-size: 60px;
+	color: #FE9801;
+	float: right;
+	vertical-align:middle;
+	margin: 18px 10px;
+	text-shadow : 3px 3px 1px #CCDA46;
+	position: relative;
+}
+
+#logout-btn #logout-i:hover, .alarm-i:hover{
+	color: #CCDA46 ;
+	cursor: pointer;
+	transform: scale(1.1);
+}
+.badge-danger{
+	background-color: #f65262;
+}
+.unread-count{
+	position: absolute;
+	display: flex;
+	width: 30px;
+    height: 30px;
+    top: -10px;
+    left: 35px;
+    font-size: 18px !important;
+    text-shadow: none !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* navbar 통째 */
+header nav.fixed-bottom{
+	text-align:center;
+	margin: 0 auto;
+	background-color: #FFF;
+	position: fixed;
+	width: 800px;
+	height: 85px;
+	border-top: 0.5px #cfcfcf solid;
+	box-shadow: 0px -2px 5px #5454544a;
+	border-radius : 10px;
+}
+header .nav-item{
+	margin: 0 41px;
+}
+
+header .nav-item a img{
+	width: 54px!important;
+}
+header .nav-item a.nav-link{
+	margin-top: 5px;
+}
+
+/********** footer **********/
+footer	{
+	background-clip:content-box; 
+	clear:both; 
+	height:80px; 
+	text-align:center;
+}
+

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.bookie.search.model.dao.SearchDao">
+	<insert id="bookEnroll">
+	insert into
+		book
+	values(
+		#{itemId},
+		#{memberId},
+		#{status},
+		#{score},
+		#{content},
+		default,
+		sysdate)
+	</insert>
+	
+	<select id="totalBook" resultType="_int">
+	select count(*) from book_ing where member_id = #{memberId} and item_id = #{itemId}
+	</select>
+	
+	<delete id="bookDelete">
+	delete from book where member_id = #{member_id}
+	</delete>
+
+	<delete id="bookIngDeleteByNo">
+	delete from book_ing where ing_no = #{ingNo}
+	</delete>
+	
+	<insert id="bookIngEnroll">
+	insert into
+		book_ing
+	values(
+		seq_book_ing_no.nextval,
+		#{itemId},
+		#{memberId},
+		#{startedAt},
+		<if test="status == '읽음'">
+		#{endedAt},
+		</if>
+		<if test="status != '읽음'">
+		null,
+		</if>
+		sysdate
+	)
+	</insert>
+	
+	<select id="getMyBook" resultType="book">
+	select *
+	from book 
+	where
+	    member_id = #{memberId} and item_id = #{itemId}
+	</select>
+	
+	<update id="bookStatusUpdate">
+	update
+		book
+	set
+		status = #{status}
+	where 
+		item_id = #{itemId} and member_id = #{memberId}
+	</update>
+	
+	<update id="bookUpdate">
+	update
+		book
+	set
+		status = #{status},
+		score = #{score},
+		content = #{content}
+	where
+		item_id = #{itemId} and member_id = #{memberId}
+	</update>
+	
+	<update id="bookIngUpdate">
+	update
+		book_ing
+	set
+		started_at = #{startedAt},
+		ended_at = #{endedAt}
+	where
+		ing_no = #{ingNo}
+	</update>
+	
+	<delete id="bookIngDelete">
+	delete from book_ing 
+	where 
+		member_id = #{memberId} and
+		item_id = #{itemId} and
+		ended_at is null
+	</delete>
+	
+	<select id="selectReadList" resultMap="bookIngMap">
+		select * from book_ing where item_id = #{itemId} and member_id = #{memberId} order by started_at desc
+	</select>
+	
+	<resultMap type="book" id="bookIngMap">
+		<id column="ing_no" property="ingNo"/>
+		<result column="item_id" property="itemId"/>
+		<result column="member_id" property="memberId"/>
+		<result column="started_at" property="startedAt"/>
+		<result column="ended_at" property="endedAt"/>
+	</resultMap>
+	
+	<insert id="moreReadEnroll">
+	insert into
+		book_ing
+	values(
+		seq_book_ing_no.nextval,
+		#{itemId},
+		#{memberId},
+		#{startedAt},
+		#{endedAt},
+		sysdate
+	)
+	</insert>
+	
+	<delete id="moreReadDelete">
+	delete from book_ing where ing_no = #{ingNo}
+	</delete>
+	
+	<update id="moreReadUpdate">
+	update 
+		book_ing
+	set
+		started_at = #{startedAt},
+		ended_at = #{endedAt}
+	where
+		ing_no = #{ingNo}
+	</update>
+	
+	<select id="selectOneMember" resultMap="memberInterestMap">
+	select 
+	    m.*,
+	    (select interest from interest where member_id = #{memberId}) interest
+	from 
+	    member m 
+	where
+		m.member_id = #{memberId} 
+	</select>
+	
+	<resultMap type="member" id="memberInterestMap">
+		<id column="member_id" property="memberId"/>
+		<result column="password" property="password"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="nickname" property="nickname"/>
+		<result column="phone" property="phone"/>
+		<result column="gender" property="gender"/>
+		<result column="birthday" property="birthday"/>
+		<result column="introduce" property="introduce"/>
+		<result column="renamed_filename" property="renamedFilename"/>
+		<result column="original_filename" property="originalFilename"/>
+		<result column="sns" property="sns"/>
+		<result column="point" property="point"/>
+		<result column="email" property="email"/>
+		<result column="interest" property="interest"/>
+	</resultMap>
+	
+	<update id="updateMypick">
+	update
+		book
+	set
+		my_pick = #{myPick}
+	where
+		member_id = #{memberId} and item_id = #{itemId}
+	</update>
+	
+	<select id="selectMemberListByInterest" resultMap="memberListInterestMap">
+		select 
+            m.*,
+            i.interest
+		from 
+		    member m join interest i
+                on m.member_id = i.member_id
+        where
+       		interest like '%${interest}%' and m.member_id != #{memberId}
+	</select>
+	
+	<resultMap id="memberListInterestMap" type="member">
+		<id column="member_id" property="memberId"/>
+		<result column="nickname" property="nickname"/>
+		<result column="introduce" property="introduce"/>
+		<result column="renamed_filename" property="renamedFilename"/>
+		<result column="original_filename" property="originalFilename"/>
+		<association property="interests" javaType="interest">
+			<result column="interest" property="interests"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectFollowerList" resultType="follower">
+		select
+			*
+		from
+			follower
+		where
+			member_id = #{memberId}
+	</select>
+	
+	<insert id="insertFollower">
+		insert into
+			follower
+		values(
+			#{memberId},
+			#{followingMemberId})
+	</insert>
+	
+	<delete id="deleteFollower">
+		delete from
+			follower
+		where
+			member_id = #{memberId} and following_member_id = #{followingMemberId}
+	</delete>
+	
+	<select id="selectBooKItemIdByStatus" resultType="string">
+		select 
+			item_id 
+		from 
+			book 
+		where 
+			member_id = #{memberId} and status = #{status}
+	</select>
+	
+	<select id="selectBooKItemId" resultType="string">
+		select
+			item_id
+		from
+			book
+		where
+			member_id = #{memberId}
+			and
+			status = #{status}
+	</select>
+	
+	<select id="selectMyPickItemId" resultType="string">
+		select
+			item_id
+		from
+			book
+		where
+			member_id = #{memberId}
+			and
+			my_pick = #{myPick}
+	</select>
+	
+	<select id="selectMyBookAllItemId" resultType="string">
+		select
+			item_id
+		from
+			book
+		where
+			member_id = #{memberId}
+	</select>
+	
+	<select id="selectBookIngNo" resultType="_int">
+		select
+			max(ing_no) ing_no
+		from
+			book_ing
+		where
+			member_id = #{memberId} and item_id = #{itemId}
+	</select>
+</mapper>

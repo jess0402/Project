@@ -1,0 +1,345 @@
+@charset "UTF-8";
+section#content	{
+	margin: 0 auto;
+	padding: 20px 30px;
+	min-height:700px;
+	border-radius: 5px;
+}
+
+/********** 상단 피드 헤더 바 **********/
+#pheed-header.drop {
+  position: fixed;
+  animation: dropHeader 0.3s;
+}
+@keyframes dropHeader {
+  0% {
+    top: -5rem;
+  }
+  100% {
+    top: 0;
+  }
+}
+#pheed-header{
+	padding: 0 20px;
+	top: 0px;
+	width: 800px;
+	font-size: 25px;
+	background-color: #FFF;
+	z-index:2;
+	border-radius: 10px;
+	box-shadow: 1px 2px 3px #5454544a;
+}
+
+/* 리스트 버튼 */
+.btns .btn-pheed{
+	color:#CCDA46;
+}
+.btns .btn-pheed:hover{
+	text-decoration: none;
+	color: #ff7614;
+	text-shadow: 1px 1px 2px #ffda5f;
+}
+/* 등록버튼 */
+#btn-pheed-enroll{
+	text-decoration: none;
+	color: #FE9801;
+	float: right;
+}
+#btn-pheed-enroll:hover{
+	color: #ff7614;
+	text-shadow: 1px 1px 2px #ffda5f;
+}
+#btn-pheed-enroll .fa-plus{
+	font-size:30px;
+}
+
+/* 빈목록 */
+#emptyPheed {
+	border : 2px solid #CCDA46;
+	border-radius: 15px;
+}
+#emptyPheed a{
+	color : #FE9801;
+}
+#emptyPheed a:hover{
+	color : #d88100;
+}
+/* 피드 한개 */
+#content .pheed-container{
+	/* border: 2px solid #F4EEC7; */
+	/* background-color: #F4EEC7; */
+	margin : 30px;
+	text-align: center;
+	border-radius: 10px;
+	/* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); */
+}
+/* 프로필 */
+#content .pheed-container .pheed-writer .text-link{
+	font-size: 40px;
+}
+a.text-link{
+	color: #000;
+}
+a.text-link:hover{
+	color: #FE9801;
+}
+
+#content .pheed-container .pheed-writer .profile{
+	position:relative;
+	top: 25px;
+	width:70px;
+	height:70px;
+	border-radius: 50%;
+	background-color: #c7c7c7;
+}
+#content .pheed-container .pheed-writer .profile img{
+	width: 70px;
+	height:70px;
+	border-radius: 50%;
+}
+#content .pheed-container .pheed-writer .profile .user-icon{
+	font-size: 43px;
+	position: relative;
+	top: 14px;
+	left: 13.5px;
+	color: #FFF;
+	text-shadow: 0 0 3px #5454544a;
+}
+#content .pheed-container .pheed-writer{
+	text-align: left;
+	padding: 0 30px;
+}
+#content .pheed-container .pheed-writer h2{
+	margin-left: 90px;
+	position: relative;
+	bottom: 30px;
+}
+
+#content .pheed-container .pheed-img img{
+	width: 100%;
+}
+#content .pheed-container .pheed{
+	text-align: left;
+	font-size: 27px;
+	padding: 30px;
+}
+#content .pheed-container .pheed .pheed-content p{
+	font-size: 24px;
+}
+#content .pheed-container .pheed .pheed-content .book-info p{
+	font-size: 20px;
+	color: #adadad;
+}
+
+
+/* 좋아요버튼 */
+#content .pheed-container .pheed .pheed-sns{
+	z-index : 1;
+}
+#content .pheed-container .pheed .pheed-sns .pheed-sns-icons .btn-group{
+	display: inline !important;
+}
+#content .pheed-container .pheed .pheed-sns .pheed-sns-icons .btn-group .btn{
+	padding: 5px 5px;
+	font-size: 34px;
+	margin: 0 3px;
+	background-color: white;
+	color: #000 !important;
+}
+#content .pheed-container .pheed .pheed-sns .pheed-sns-icons .btn-group #btn-report{
+	float: right;
+}
+.fa-heart, .fa-bookmark {
+	font-size: 34px;
+}
+.front {
+	color: black;
+	z-index: 1 !important;
+}
+.h-behind {
+	color: #F10086;
+    font-size: 29px;
+}
+
+.b-behind {
+	color: #FFC46B;
+    font-size: 29px;
+}
+.h-span, .b-span {
+	cursor: pointer;
+}
+.fa-stack {
+	width: 1.7em !important;
+}
+
+
+#content #reportModal #alert{
+	display: block;
+	width: 100%;
+}
+
+/* 수정 삭제버튼 */
+.btn-group button.btn-update{
+	background-color : #FE9801;
+	border-radius: 15px;
+	color: #FFF;
+	border : none;
+}
+.btn-group button.btn-update:hover{
+	cursor:pointer;
+	background-color : #d88200;
+}
+.btn-group button.btn-delete:hover{
+	cursor:pointer;
+	background-color : #a61515;
+}
+.btn-group button.btn-delete{
+	border : none;
+	background-color : grey;
+	border-radius: 15px;
+	color: #FFF;
+}
+
+/******** 댓글창 ********/
+#sidebar.show-nav {
+    transform: translate(0px);
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.5) !important;
+    z-index: 100;
+}
+#sidebar {
+    color: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32%;
+    height: 88%;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: .3s ease;
+    border-radius: 10px;
+    overflow-x:scroll;
+}
+#sidebar button#close{
+	display: block;
+	float: right;
+	font-size: 30px;
+}
+
+#sidebar .dontclick{
+	height: 100%;
+}
+
+/************** 댓글 **************/
+hr{
+	border-top: 2px solid #697C37 !important;
+}
+#comment-container #comment-content{
+	border-radius : 14px;
+}
+#comment-container #btn-enroll-comment{
+	border-radius : 14px;
+	color: #fff;
+    background-color: #FE9801;
+    border-color: #FE9801;
+    width: 40px;
+    cursor:pointer;
+}
+
+#comment-container span.text-dark {
+   margin-left: 20px;
+    margin-right: 10px;
+    font-size: 22px;
+    width: 73%;
+}
+div.coComment-div span.text-secondary {
+    float: right;
+}
+div.comment-div span.text-secondary {
+    float: right;
+}
+
+.link-grey { color: #aaa; } .link-grey:hover { color: #FE9801; }
+
+/****** 댓글수정 인풋 *******/
+.updateCommentInput {
+   display: inline-block;
+    width: 100%;
+    border-radius : 14px;
+}
+
+/****** 대댓글 *************/
+.co-div {
+   width: 100%;
+   justify-content: space-between;
+
+}
+.co-left {
+    justify-content: flex-start;
+}
+.co-right {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-left: 10px;
+    justify-content: flex-end;
+}
+.co-writer span{
+	font-size: 22px;
+}
+.co-writer {
+    justify-content: flex-start;
+    padding-right: 15px;
+    color: #FE9801;
+}
+.c-content {
+   display: flex;
+   margin-left: 60px;
+}
+.co-Content {
+   display: flex;
+   margin-left: 73px;
+}
+.flex-center{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+.text-secondary{
+	font-size: 13px;
+}
+
+.small {
+   color: #aaa;
+}
+
+.btn {
+   margin-left: 5px;
+   	border-radius : 14px;
+	color: #fff;
+    background-color: #FE9801;
+    border-color: #FE9801;
+}
+
+
+/******** 대댓글 css **********/
+.co-ref-div {
+   position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    margin-left: 125px;
+}
+.co-ref-input {
+	padding:5px;
+   width: 94%;
+   border: 1px solid #ced4da;
+   border-radius: 14px;
+}
+.ref-btn {
+	border-color: #FE9801;
+   border: none;
+   cursor: pointer;
+   margin-left: 5px;
+}
+

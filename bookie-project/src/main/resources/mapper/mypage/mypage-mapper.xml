@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.bookie.mypage.model.dao.MypageDao">
+
+	<select id="selectMyQnaList" resultMap="qnaListCollectionMap">
+		select 
+			*
+		from
+			qna q
+				left join member m on q.member_id = m.member_id
+		where
+			q.member_id = #{memberId}
+		order by
+			q.enroll_date desc
+	</select>
+	
+	<resultMap type="qna" id="qnaListCollectionMap">
+		<id column="qna_no" property="qnaNo"/>
+		<result column="member_id" property="memberId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="status" property="status"/>
+		<association property="member" javaType="member">
+			<id column="member_id" property="memberId"/>
+			<result column="nickname" property="nickname"/>
+		</association>
+	</resultMap>
+	
+	<insert id="qnaEnroll">
+		insert into
+			qna
+		values(
+			seq_qna_no.nextval,
+			#{memberId},
+			#{title},
+			#{content},
+			sysdate,
+			default
+		)
+	</insert>
+	
+	<select id="getFollowing" resultType="_int">
+		select
+			count(*)
+		from
+			follower
+		where
+			member_id = #{memberId}
+	</select>
+	
+	<select id="getFollowers" resultType="_int">
+		select
+			count(*)
+		from
+			follower
+		where
+			following_member_id = #{memberId}
+	</select>
+	
+	<select id="selectFollowerList" resultMap="followerMap">
+		select
+		    *
+		from
+		    follower f join member m
+		        on f.member_id = m.member_id
+		where
+			following_member_id = #{memberId}
+	</select>
+	
+	<select id="selectFollowingList" resultMap="followerMap">
+		select
+		    *
+		from
+		    follower f join member m
+		        on f.following_member_id = m.member_id
+		where
+		    f.member_id = #{memberId}
+	</select>
+	
+	<resultMap type="follower" id="followerMap">
+		<result column="member_id" property="memberId"/>
+		<result column="following_member_id" property="followingMemberId"/>
+		<association property="member" javaType="member">
+			<result column="nickname" property="nickname"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectOneQna" resultMap="qnaOneCollectionMap">
+		select
+			*
+		from
+			qna q left join qna_comment c
+				on q.qna_no = c.qna_no
+		where
+			q.qna_no = #{qnaNo}
+	</select>
+	
+	<resultMap type="qna" id="qnaOneCollectionMap">
+		<id column="qna_no" property="qnaNo"/>
+		<result column="member_id" property="memberId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="status" property="status"/>
+		<collection property="qnaCommentList" javaType="qnaComment">
+			<id column="comment_no" property="commentNo"/>
+			<result column="qna_no" property="qnaNo"/>
+			<result column="comment_content" property="commentContent"/>
+			<result column="created_at" property="createdAt"/>
+		</collection>
+	</resultMap>
+	
+	<select id="SelectMyBookIngList" resultMap="MyBookIngMap">
+		select
+			*
+		from
+			book_ing
+		where
+			member_id = #{memberId}
+	</select>
+	
+	<resultMap type="bookIng" id="MyBookIngMap">
+		<id column="ing_no" property="ingNo"/>
+		<result column="member_id" property="memberId"/>
+		<result column="started_at" property="startedAt"/>
+		<result column="ended_at" property="endedAt"/>
+	</resultMap>
+	
+	
+	<select id="selectMyClubList" resultMap="clubListCollectionMap">
+		select
+		    *
+		from (
+		    select
+		    	<if test="sortType == null">
+		        row_number() over (order by c.club_start desc) rnum,
+		        </if>
+		    	<if test="sortType != null">
+		        row_number() over (order by c.club_start) rnum,
+		        </if>
+		        c.*,
+		        (select count(*) from my_club where club_no = c.club_no) current_nop,
+		        (select count(*) from likes_club where club_no = c.club_no) likes_Cnt
+		    from
+		        club c 
+		        	left join my_club mc on c.club_no = mc.club_no 
+		    where
+		        member_id = #{memberId})
+		where rnum between #{start} and #{end}
+	</select>
+	<resultMap type="club" id="clubListCollectionMap">
+		<id column="club_no" property="clubNo"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="recruit_start" property="recruitStart"/>
+		<result column="recruit_end" property="recruitEnd"/>
+		<result column="club_start" property="clubStart"/>
+		<result column="club_end" property="clubEnd"/>
+		<result column="maximum_nop" property="maximumNop"/>
+		<result column="minimum_nop" property="minimumNop"/>
+		<result column="deposit" property="deposit"/>
+		<result column="current_nop" property="currentNop"/>
+		<result column="interest" property="interest"/>
+		<result column="likes_cnt" property="likesCnt"/>
+		<result column="mission_cnt" property="missionCnt"/>
+		<result column="book_Count" property="bookCount"/>
+	</resultMap>
+	
+	<select id="selectMyPheedList" resultType="pheed">
+		select 
+    		ph.*,
+    		(select count(*) from likes_pheed where pheed_no = ph.pheed_no) likes_cnt 
+		from 
+    		(select row_number() over (order by enroll_date desc) rnum, p.* from pheed p) ph
+		where
+    		(rnum between #{cPage} and #{numPerPage}) and member_id = #{memberId}
+	</select>
+	
+	
+	<select id="selectMyDokooList" resultMap="dokooCollectionMap">
+		select
+        tb.*,
+        m.*
+    from
+         (select 
+                row_number() over(order by enroll_date desc) rnum, 
+                d.* 
+            from 
+                dokoo d
+            where member_id = #{memberId}) tb 
+                left join member m on tb.member_id = m.member_id
+    where 
+        rnum between #{start} and #{end}
+    order by
+        tb.enroll_date desc
+	</select>
+	<resultMap type="dokoo" id="dokooCollectionMap">
+		<id column="dokoo_no" property="dokooNo"/>
+		<result column="member_id" property="memberId"/>
+		<result column="item_id" property="itemId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="is_opened" property="isOpened"/>
+		
+		<association property="member" javaType="member">
+			<id column="member_id" property="memberId"/>
+			<result column="nickname" property="nickname"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+		</association>
+		
+	</resultMap>
+	
+	<select id="selectWishMyDokooList" resultMap="dokooListMap">  
+	    select
+	        tb.*,
+	        m.*
+	    from
+	         (select 
+	            row_number() over(order by enroll_date desc) rnum,
+	            d.* 
+	                from dokoo d 
+	                    inner join wishlist_dokoo wd on d.dokoo_no = wd.dokoo_no where wd.member_id = #{memberId}) tb 
+	                        left join member m on tb.member_id = m.member_id
+	    where 
+	        rnum between #{start} and #{end}
+	    order by
+	        tb.enroll_date desc
+	</select>
+	<resultMap type="dokoo" id="dokooListMap">
+		<id column="dokoo_no" property="dokooNo"/>
+		<result column="member_id" property="memberId"/>
+		<result column="item_id" property="itemId"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="is_opened" property="isOpened"/>
+		
+		<association property="member" javaType="member">
+			<result column="nickname" property="nickname"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+		</association>
+		
+	</resultMap>
+	
+	<select id="selectWishMyPheedFList" resultType="pheed">
+		select 
+		    ph.*,
+		    (select count(*) from likes_pheed where pheed_no = ph.pheed_no) likes_cnt 
+		from 
+		    (select  row_number() over (order by enroll_date desc) rnum, p.* from pheed p inner join wishlist_pheed wp on p.pheed_no = wp.pheed_no where wp.member_id = #{memberId}) ph
+		where
+		    rnum between #{cPage} and #{numPerPage}
+	</select>
+	
+	
+	<select id="selectMyScrapClubList" resultMap="myClubListCollectionMap">
+		select
+	        *
+	    from (
+	        select
+		    	<if test="sortType == null">
+		        row_number() over (order by c.club_start desc) rnum,
+		        </if>
+		    	<if test="sortType != null">
+		        row_number() over (order by c.club_start) rnum,
+		        </if>
+	            c.*,
+	            (select count(*) from wishlist_club where club_no = c.club_no) current_nop,
+	            (select count(*) from likes_club where club_no = c.club_no) likes_Cnt
+	        from
+	            club c 
+	                left join wishlist_club mc on c.club_no = mc.club_no         
+	        where
+	            member_id = #{memberId})
+	    where rnum between #{start} and #{end}
+	</select>
+	<resultMap type="club" id="myClubListCollectionMap">
+		<id column="club_no" property="clubNo"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="recruit_start" property="recruitStart"/>
+		<result column="recruit_end" property="recruitEnd"/>
+		<result column="club_start" property="clubStart"/>
+		<result column="club_end" property="clubEnd"/>
+		<result column="maximum_nop" property="maximumNop"/>
+		<result column="minimum_nop" property="minimumNop"/>
+		<result column="deposit" property="deposit"/>
+		<result column="current_nop" property="currentNop"/>
+		<result column="interest" property="interest"/>
+		<result column="likes_cnt" property="likesCnt"/>
+		<result column="mission_cnt" property="missionCnt"/>
+		<result column="book_Count" property="bookCount"/>
+	</resultMap>
+	
+	
+</mapper>

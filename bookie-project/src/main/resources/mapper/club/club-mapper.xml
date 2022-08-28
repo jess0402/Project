@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.bookie.club.model.dao.ClubDao">
+
+	<insert id="enrollClub">
+		insert into
+			club
+		values (
+			seq_club_no.nextval,
+			#{title},
+			#{content},
+			#{recruitStart},
+			#{recruitEnd},
+			#{clubStart},
+			#{clubEnd},
+			#{bookCount},
+			#{maximumNop},
+			#{minimumNop},
+			#{deposit},
+			#{interest},
+			#{missionCnt}
+		)
+		<selectKey keyProperty="clubNo" resultType="_int" order="AFTER">
+			select
+				seq_club_no.currval
+			from
+				dual
+		</selectKey>
+	</insert>
+	
+	
+	<select id="selectClubList" resultMap="clubListCollectionMap">
+		select
+		    *
+		from (
+		    select
+		    	<if test="sortType == null">
+		        row_number() over (order by recruit_start desc) rnum,
+		        </if>
+		    	<if test="sortType != null">
+		        row_number() over (order by recruit_end) rnum,
+		        </if>
+		        c.*,
+		        (select count(*) from my_club where club_no = c.club_no) current_nop,
+		        (select count(*) from likes_club where club_no = c.club_no) likes_Cnt
+		    from
+		        club c
+		    where
+		    <![CDATA[
+		        to_char(recruit_end, 'YY/MM/DD') >= to_char(sysdate, 'YY/MM/DD'))			
+			]]>
+		where rnum between #{start} and #{end}
+	</select>
+	<resultMap type="club" id="clubListCollectionMap">
+		<id column="club_no" property="clubNo"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="recruit_start" property="recruitStart"/>
+		<result column="recruit_end" property="recruitEnd"/>
+		<result column="club_start" property="clubStart"/>
+		<result column="club_end" property="clubEnd"/>
+		<result column="maximum_nop" property="maximumNop"/>
+		<result column="minimum_nop" property="minimumNop"/>
+		<result column="deposit" property="deposit"/>
+		<result column="current_nop" property="currentNop"/>
+		<result column="interest" property="interest"/>
+		<result column="likes_cnt" property="likesCnt"/>
+		<result column="mission_cnt" property="missionCnt"/>
+		<result column="book_Count" property="bookCount"/>
+	</resultMap>
+	
+	<select id="selectClubOldList" resultMap="clubListCollectionMap">
+		select
+		    *
+		from (
+		    select
+		        row_number() over (order by recruit_start desc) rnum,
+		        c.*,
+		        (select count(*) from my_club where club_no = c.club_no) current_nop,
+		        (select count(*) from likes_club where club_no = c.club_no) likes_Cnt
+		    from
+		        club c
+		     where
+		    <![CDATA[
+		        to_char(club_end, 'YY/MM/DD') < to_char(sysdate, 'YY/MM/DD'))			
+			]]>
+		where rnum between #{start} and #{end}
+	</select>
+	
+	<select id="selectClubListMonth" resultMap="clubListCollectionMap">
+		select
+		    c.*,
+		    (select count(*) from my_club where club_no = c.club_no) current_nop,
+		    (select count(*) from likes_club where club_no = c.club_no) likes_Cnt
+		from
+		    club c
+		where
+			to_char(club_start, 'MM') = to_char(sysdate, 'MM')
+	</select>
+	
+	
+	<select id="selectClubBook" resultMap="selectClubBookResultMap">
+		select
+			*
+		from 
+			club_book
+		where 
+			club_no = #{clubNo}	
+	</select>
+	<resultMap type="clubBook" id="selectClubBookResultMap">
+         <id column="item_id" property="itemId"/>
+         <id column="club_no" property="clubNo"/>
+         <result column="img_src" property="imgSrc"/>
+         <result column="book_title" property="bookTitle"/>
+	</resultMap>
+	
+	
+	
+	<select id="selectOneClub" resultMap="selectOneClubCollectionMap">
+      select
+         c.*,
+         b.*,
+         b.club_no bclub_no,
+          (select count(*) from my_club where club_no = #{clubNo}) current_nop,
+          (select count(*) from likes_club where club_no = #{clubNo}) likes_Cnt
+      from
+          club c
+              join club_book b on c.club_no = b.club_no
+      where 
+         c.club_no = #{clubNo}
+   </select>
+   <resultMap type="club" id="selectOneClubCollectionMap">
+      <id column="club_no" property="clubNo"/>
+      <result column="title" property="title"/>
+      <result column="content" property="content"/>
+      <result column="recruit_start" property="recruitStart"/>
+      <result column="recruit_end" property="recruitEnd"/>
+      <result column="club_start" property="clubStart"/>
+      <result column="club_end" property="clubEnd"/>
+      <result column="maximum_nop" property="maximumNop"/>
+      <result column="minimum_nop" property="minimumNop"/>
+      <result column="deposit" property="deposit"/>
+      <result column="current_nop" property="currentNop"/>
+      <result column="interest" property="interest"/>
+      <result column="likes_cnt" property="likesCnt"/>
+      <result column="mission_cnt" property="missionCnt"/>
+      <result column="book_Count" property="bookCount"/>
+      <collection property="bookList" javaType="arrayList" ofType="clubBook">
+            <id column="item_id" property="itemId"/>
+            <id column="bclub_no" property="clubNo"/>
+            <result column="img_src" property="imgSrc"/>
+            <result column="book_title" property="bookTitle"/>
+         </collection>
+   </resultMap>
+	
+	
+	<select id="selectBookMission" resultMap="selectMissionCollectionMap">
+		select 
+			b.*,
+			m.*,
+			m.club_no mclub_no
+		from 
+			club_book b 
+				join mission m on b.item_id = m.m_item_id
+		where 
+            b.club_no = #{clubNo} and m.club_no = #{clubNo} and m.m_item_id = #{itemId}
+	</select>
+	<resultMap type="clubBook" id="selectMissionCollectionMap">
+			<id column="item_id" property="itemId"/>
+			<id column="club_no" property="clubNo"/>
+			<result column="img_src" property="imgSrc"/>
+			<result column="book_title" property="bookTitle"/>
+		<collection property="missionList" javaType="arrayList" ofType="mission">
+			<id column="mission_no" property="missionNo"/>
+			<result column="mclub_no" property="clubNo"/>
+			<result column="m_title" property="title"/>
+			<result column="m_content" property="content"/>
+			<result column="point" property="point"/>
+			<result column="m_Item_Id" property="itemId"/>
+			<result column="m_endDate" property="mendDate"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getMissions" resultMap="selectBookMissionMap">
+		select 
+			*
+		from
+			mission
+		where 
+			club_no = #{clubNo} and m_item_id = #{itemId}
+	</select>
+	<resultMap id="selectBookMissionMap" type="mission">
+		<id column="mission_no" property="missionNo"/>
+		<result column="club_no" property="clubNo"/>
+		<result column="m_title" property="title"/>
+		<result column="m_content" property="content"/>
+		<result column="point" property="point"/>
+		<result column="m_Item_Id" property="itemId"/>
+		<result column="m_endDate" property="mendDate"/>
+	</resultMap>
+	
+	
+	<insert id="insertClubBoard">
+		insert into
+			club_chat
+		values (
+			seq_club_chat_no.nextval,
+			#{nickname},
+			#{clubNo},
+			#{title},
+			#{content},
+			default)
+		<selectKey keyProperty="chatNo" resultType="_int" order="AFTER">
+			select
+				seq_club_chat_no.currval
+			from
+				dual
+		</selectKey>
+	</insert>
+	
+	<select id="selectOneBoardCollection" resultMap="clubBoardCollectionMap">
+		select
+			cc.*,
+			ca.*,
+			m.*,
+            m.renamed_filename profilePic,
+			ca.chat_no ca_chat_no
+		from
+			club_chat cc 
+				left join chat_attachment ca on cc.chat_no = ca.chat_no 
+				left join member m on cc.nickname = m.nickname 
+		where
+			cc.chat_no = #{chatNo}
+	</select>
+	<resultMap type="chat" id="clubBoardCollectionMap">
+		<id column="chat_no" property="chatNo"/>
+		<result column="nickname" property="nickname"/>
+		<result column="club_no" property="clubNo"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<association property="member" javaType="member">
+			<id column="member_id" property="memberId"/>
+			<result column="profilePic" property="renamedFilename"/>
+		</association>
+		<collection property="chatAttachments" javaType="arraylist" ofType="chatAttachment">
+			<id column="attach_no" property="attachNo" />
+			<result column="ca_chat_no" property="chatNo"/>
+			<result column="original_filename" property="originalFilename"/>
+			<result column="renamed_filename" property="renamedFilename"/>
+			<result column="created_at" property="createdAt"/>
+		</collection>
+	</resultMap>
+	
+	<insert id="commentEnroll">
+		insert into 
+			chat_comment 
+		values 
+			(seq_comment_no.nextval, 
+			#{chatNo}, 
+			#{nickname}, 
+			null, 
+			default, 
+			#{commentContent},
+			default)
+		<selectKey keyProperty="commentNo" resultType="_int" order="AFTER">
+			select
+				seq_comment_no.currval
+			from
+				dual
+		</selectKey>
+	</insert>
+	
+	<insert id="commentRefEnroll">
+		insert into 
+			chat_comment 
+		values 
+			(seq_comment_no.nextval, 
+			#{chatNo}, 
+			#{nickname}, 
+			#{commentRef}, 
+			default, 
+			#{commentContent},
+			2)
+		<selectKey keyProperty="commentNo" resultType="_int" order="AFTER">
+			select
+				seq_comment_no.currval
+			from
+				dual
+		</selectKey>
+	</insert>
+	
+	<select id="selectChatComments" resultMap="chatCommentMap">
+		select 
+		    cc.*,
+		    (select renamed_filename 
+					from member m where m.nickname = cc.nickname) "renamed_filename"
+		from 
+		    chat_comment cc 
+		where 
+		    chat_no = #{chatNo} 
+		        start with 
+		        	comment_level = 1
+		        connect by 
+		        	prior comment_no = comment_ref 
+		order siblings by 
+			created_at desc
+	</select>
+	<resultMap type="chatComment" id="chatCommentMap">
+		<id column="comment_no" property="commentNo" />
+		<result column="chat_no" property="chatNo"/>
+		<result column="nickname" property="nickname"/>
+		<result column="comment_ref" property="commentRef"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="comment_content" property="commentContent"/>
+		<result column="comment_level" property="commentLevel"/>
+		<result column="renamed_filename" property="renamedFilename"/>
+	</resultMap>
+	
+	
+	<select id="selectClubBoardList" resultMap="clubBoardListMap">
+		select 
+		    * 
+		from 
+		    (select 
+		    	<if test="sortType == null">
+		        row_number() over(order by enroll_date desc) rnum, 
+		        </if>
+		        <if test="sortType != null">
+		        row_number() over(order by enroll_date) rnum, 
+		        </if>
+		        cc.* 
+		    from 
+		        club_chat cc 
+		    where club_no = #{clubNo}) 
+		where rnum between #{start} and #{end}
+	</select>
+	<resultMap type="chat" id="clubBoardListMap">
+		<id column="chat_no" property="chatNo"/>
+		<result column="nickname" property="nickname"/>
+		<result column="title" property="title"/>
+		<result column="enroll_date" property="enrollDate"/>
+	</resultMap>
+	
+	
+	<select id="selectClubApplicants" resultMap="clubApplicantsMap">
+		select
+		    mc.*,
+		    m.*,
+		    mc.member_id mcMember_id
+		from 
+		    my_club mc 
+		        left join member m on mc.member_id = m.member_id
+		where 
+		    mc.club_no = #{clubNo}
+	</select>
+	<resultMap type="clubApplicant" id="clubApplicantsMap">
+		<id column="mcMember_id" property="memberId"/>
+		<id column="club_no" property="clubNo"/>
+		<result column="deposit" property="deposit"/>
+		<result column="renamed_filename" property="renamedFilename"/>
+		<result column="nickname" property="nickname"/>
+		<result column="introduce" property="introduce"/>
+	</resultMap>
+	
+	<select id="getMissionsForOneMember" resultMap="missionByMemberMap">
+		select  
+		    m.*,
+		    (select img_src from club_book c where c.club_no = #{clubNo} and m.m_item_id = c.item_id) img_src
+		from 
+		    mission m 
+		where 
+		    m.club_no = #{clubNo}
+		order by 
+        	 m_endDate
+	</select>
+	<resultMap type="mission" id="missionByMemberMap">
+		<id column="mission_no" property="missionNo"/>
+		<result column="club_no" property="clubNo"/>
+		<result column="m_title" property="title"/>
+		<result column="m_content" property="content"/>
+		<result column="point" property="point"/>
+		<result column="m_Item_Id" property="itemId"/>
+		<result column="m_endDate" property="mendDate"/>
+		<result column="img_src" property="imgSrc"/>
+	</resultMap>
+	
+	<select id="getClubDetailInfo" resultMap="clubDetailMap">
+	select
+	    c.deposit,
+	    c.title,
+	    c.content,
+	    c.interest,
+	    c.club_start,
+	    c.club_end,
+	    (select count(*) from mission where club_no = #{clubNo}) total_mission
+	from 
+	    club c 
+	where
+		c.club_no = #{clubNo}
+	</select>
+	<resultMap type="club" id="clubDetailMap">
+		<id column="club_no" property="clubNo"/>
+		<result column="deposit" property="deposit" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="interest" property="interest" />
+		<result column="club_start" property="clubStart" />
+		<result column="club_end" property="clubEnd" />
+		<result column="total_mission" property="totalMission" />
+		<result column="d_start" property="dStart" />
+	</resultMap>
+	
+	<insert id="addPointStatusRefundDeposit">
+		insert into 
+			point_status 
+		values(
+			seq_point_no.nextval, 
+			#{memberId}, 
+			#{content}, 
+			#{deposit}, 
+			#{totalPoint}, 
+			default, 
+			null, 
+			#{status})
+		<selectKey keyProperty="pointNo" resultType="_int" order="AFTER">
+			select
+				seq_point_no.currval
+			from
+				dual
+		</selectKey>
+	</insert>
+	
+</mapper>

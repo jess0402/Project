@@ -1,0 +1,148 @@
+@charset "UTF-8";
+section#content	{
+	margin: 0 auto;
+	padding: 20px 71px 20px 95px;
+	min-height:1000px;
+	border-radius: 5px;
+}
+
+#clubBook-container {
+	background-image: url(/bookie/resources/images/clubBoardBackground.png) !important;
+	background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: scroll;
+    background-size: 98%;
+}
+
+/***** 테이블 위 제목과 추가 버튼 *****/
+section#content #title {
+    margin-top: 150px;
+    margin-bottom: 20px;
+}
+#title h1 {
+	font-size: xx-large !important;
+} 
+#clubBoard-enroll {
+    height: 50px;
+    position: relative;
+    right: 10px;
+    top: -10px;
+    text-decoration: none;
+    color: #FE9801;
+    float: right;
+    border-radius: 50%;
+}
+
+#clubBoard-enroll .fa-plus {
+    font-size: 25px;
+}
+
+#sortTypeDiv {
+	display: inline-block;
+    position: relative;
+    right: 200px;
+    top: 5px;
+    font-size: 20px;
+}
+#sortTypeDiv a {
+	color: #ffc107;
+}
+#sortTypeDiv a:hover {
+	color: #ff8700;
+    text-decoration: unset;
+}
+#sortTypeDiv a:first-child {
+	margin-right: 6px;
+}
+.textColor{
+	color: #ff8700 !important;
+}
+
+/******** 테이블 ********/
+
+#table-div table {
+	border-radius: 10px;
+    text-align: center;
+    font-size: 19px;
+    
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    
+    border-collapse: separate;
+  	border-spacing: 0 15px;
+	margin: 18px;
+    width: 95% !important;
+}
+
+
+thead tr {
+	line-height: 2rem;
+}
+
+thead tr th {
+	color: #febe56;
+    border-bottom: 1px solid #1d2124;
+    font-size: 1.2rem;
+}
+tbody tr {
+	cursor: pointer
+}
+
+/************** 페이지 바 **************/
+nav {
+	margin-top: 50px;
+}
+.pagination {
+	justify-content: center;
+}
+.pagination li {
+	margin: 0 4px;
+}
+
+.page-item.disabled .page-link {
+	color: #fe9801 !important;
+	border: 1px solid #fe9801 !important;
+}
+
+.page-link {
+	color: #6c757d !important;
+	border-radius: 30px !important;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff !important;
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+/********* 게시글이 없는경우 ***********/
+#noChatDiv {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#noChatPfirst {
+	font-size: 50px !important;
+    margin-bottom: 0 !important;
+}
+#noChatPsecond {
+	font-size: 40px !important;
+}
+#noChatWriteBtn {
+	font-size: 30px;
+    background: none;
+    border-radius: 10px;
+    color: #FE9801;
+    border: 1px solid #FE9801;
+    transition: .1s ease-in-out;
+	width: 95%;
+}
+#noChatWriteBtn:hover {
+	background-color: #FE9801;
+    color: #fff;
+    box-shadow: 0px 0px 4px #5454544a;
+}
