@@ -120,12 +120,12 @@
   ![기본정보 및 책 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/1enrollClubInfo.gif?raw=true)
   
   * 북클럽 미션 등록
-  ![미션 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/2enrollClubMission.gif?raw=true)
+  ![북클럽 미션 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/2enrollClubMission.gif?raw=true)
    
   * 구현 기능 설명
     - 책 추가시 알라딘 API를 통해 베스트셀러 목록을 불러옴
-	  - 키워드 / 제목 / 저자 / 출판사로 검색타입 설정하여 책 검색 가능
-	  - 등록한 미션 수정 및 삭제 가능
+    - 키워드 / 제목 / 저자 / 출판사로 검색타입 설정하여 책 검색 가능
+    - 등록한 미션 수정 및 삭제 가능
 
 
 ------------
