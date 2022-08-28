@@ -111,12 +111,10 @@
 
 # 📝구현 기능
 
- 1. <h3 id="enrollClub">북클럽 등록</h3>
+1. <h3 id="enrollClub">북클럽 등록</h3>
 
-
-
-  **관리자의 북클럽 등록**
-  * 북클럽 기본정보 및 책 등록(알라딘 API)
+**관리자의 북클럽 등록** 
+ * 북클럽 기본정보 및 책 등록(알라딘 API)
   ![기본정보 및 책 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/1enrollClubInfo.gif?raw=true)
   
   * 북클럽 미션 등록
@@ -126,6 +124,25 @@
     - 책 추가시 알라딘 API를 통해 베스트셀러 목록을 불러옴
     - 키워드 / 제목 / 저자 / 출판사로 검색타입 설정하여 책 검색 가능
     - 등록한 미션 수정 및 삭제 가능
+
+
+------------
+
+2. <h3 id="clubList">북클럽 조회</h3>
+
+  ![북클럽 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/8ClubList.gif?raw=true)
+
+**북클럽 조회**
+
+  * 구현 기능 설명
+    - 현재 진행중인 북클럽 조회
+    - 종료된 북클럽만을 조회 가능
+    - 기본 정렬은 북클럽 모집일 최신순이며 북클럽 모집 마감일 순으로 정렬 가능
+    - 회원은 북클럽 좋아요 가능
+    - 북클럽 좋아요(하트)를 누르면 좋아요 수가 +1 오름
+    - 회원은 북클럽 찜 가능
+    - 페이징 처리
+
 
 
 ------------
