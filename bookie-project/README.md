@@ -91,14 +91,14 @@
   - 김경한 : 아이디찾기, 비밀번호찾기
   
 * 나의 구현 기능
-  - 북클럽 등록
+  - 북클럽 등록 (알라딘 API)
   - 북클럽 목록 조회
   - 북클럽 상세페이지
-  - 북클럽 스토리
-  - 북클럽 미션, 
-  - 북클럽 게시판
-  - 북클럽 채팅
-  - 포인트 충전 
+  - 북클럽 스토리 (풀캘린더)
+  - 북클럽 미션 (미션 CRUD)
+  - 북클럽 게시판 (글 CRUD, 댓글/대댓글 CRUD)
+  - 북클럽 채팅 
+  - 포인트 충전 (아임포트 API)
 
 
 * DB 설계<br>
@@ -130,9 +130,13 @@
 
 2. <h3 id="clubList">북클럽 조회</h3>
 
-  ![북클럽 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/8ClubList.gif?raw=true)
+**북클럽 조회** 
+ * 북클럽 리스트 조회
+  ![북클럽 리스트 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/8ClubList.gif?raw=true)
 
-**북클럽 조회**
+ * 북클럽 공고 조회
+  ![북클럽 공고 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/9ClubAnn.gif?raw=true)
+
 
   * 구현 기능 설명
     - 현재 진행중인 북클럽 조회
@@ -142,6 +146,9 @@
     - 북클럽 좋아요(하트)를 누르면 좋아요 수가 +1 오름
     - 회원은 북클럽 찜 가능
     - 페이징 처리
+    
+    - 회원은 북클럽 공고에서 북클럽 신청/취소를 할 수 있음
+      - 만약 회원의 포인트가 북클럽 디파짓보다 적으면 신청 불가능
 
 ------------
 
@@ -157,7 +164,6 @@
      - 최근 3개월간의 결제 내역을 확인할 수 있음
 
 
-
 ------------
 
 4. <h3 id="clubBoard">북클럽 게시판</h3>
@@ -171,6 +177,9 @@
   
   * 게시판 글 수정
      ![북클럽 게시판 글 수정](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/15clubBoardUpdate.gif?raw=true)
+  
+  * 게시판 댓글/대댓글
+    ![북클럽 게시판 댓글/대댓글](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/5Comment.gif?raw=true)
 
   * 구현 기능 설명
     - 북클럽 게시판 글 작성 & 수정 & 삭제 가능
