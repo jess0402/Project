@@ -17,13 +17,13 @@
       <ul>
         <li><a href="#enrollClub">북클럽 등록</a></li>
         <li><a href="#clubList">북클럽 조회</a></li>
+        <li><a href="#addPoint">포인트 결제</a></li>
         <li><a href="#clubBoard">북클럽 게시판</a></li>
         <li><a href="#clubMissionDo">북클럽 미션</a></li>
         <li><a href="#clubMissionCheck">관리자의 미션 확인</a></li>
         <li><a href="#clubChat">북클럽 채팅</a></li>
         <li><a href="#clubMainPage">북클럽 메인페이지</a></li>
         <li><a href="#clubStory">북클럽 스토리</a></li>
-        <li><a href="#addPoint">포인트 결제</a></li>
         <li><a href="#myClub">내가 가입한 북클럽 조회</a></li>
       </ul>
     </li>
@@ -145,7 +145,22 @@
 
 ------------
 
-3. <h3 id="clubBoard">북클럽 게시판</h3>
+3. <h3 id="addPoint">포인트 결제</h3>
+
+![포인트 결제](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/3MyPoint.gif?raw=true)
+
+  **포인트 결제**  
+    
+   * 구현 기능 설명
+     - 사용자는 마이페이지에서 포인트를 결제할 수 있음. (북클럽 신청시 북클럽 디파짓 제출에 사용)
+     - 아임포트 API를 이용해 결제 구현
+     - 최근 3개월간의 결제 내역을 확인할 수 있음
+
+
+
+------------
+
+4. <h3 id="clubBoard">북클럽 게시판</h3>
 
 **북클럽 게시판** 
   * 게시판 목록 조회
@@ -168,4 +183,91 @@
 
 
 ------------
+
+5. <h3 id="clubMission">북클럽 미션</h3>
+
+**북클럽 미션** 
+  * 사용자의 미션 제출
+     ![북클럽 사용자 미션 제출](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/6MissionDo.gif?raw=true)
+  
+    * 구현 기능 설명
+     -	미션 마감일 빠른 순으로 정렬됨.
+     -	각 미션을 누르면 해당 미션의 내용이 반영된 모달이 열림
+     -	모달에서 미션에 맞게 미션을 수행한 뒤 (첨부파일 첨부 or 내용 작성) 제출을 누르면 모달이 닫기며, 수행 전이었던 미션의 상태가 승인 대기중으로 바뀜. 
+
+     
+  * 관리자의 미션 확인
+     ![북클럽 관리자 미션 확인](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/7MissionApprove.gif?raw=true)
+
+    * 구현 기능 설명
+     -	관리자는 회원이 제출한 미션 내역을 모아볼 수 있음.
+     -	미션 내역을 선택하면 모달 창이 열려 사용자가 수행한 미션 내용이 보여지며 승인/반려를 선택할 수 있음. 
+     -	승인/반려를 선택하면 모달창이 자동으로 닫기며, 상태를 처리한 미션이기 때문에 내역에서도 해당 미션이 지워짐.
+
+
+------------
+
+6. <h3 id="clubChat">북클럽 채팅</h3>
+
+![북클럽 채팅](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/4clubChat.gif?raw=true)
+
+  **북클럽 채팅**  
+    
+   * 구현 기능 설명
+     - 실시간으로 접속된 사람들과 채팅할 수 있음
+     - 내가 보낸 채팅은 오른쪽에, 상대가 보낸 채팅은 왼쪽에 나타남.
+     - 이전 채팅 내용을 보고 있을 때 새로운 채팅이 올라오면 알림이 뜨며, 해당 알림을 클릭하면 가장 최근 채팅으로 이동함
+
+
+------------
+
+7. <h3 id="clubDetail">북클럽 메인페이지</h3>
+
+![북클럽 채팅](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/4clubChat.gif?raw=true)
+
+  **북클럽 채팅**  
+    
+   * 구현 기능 설명
+     - 실시간으로 접속된 사람들과 채팅할 수 있음
+     - 내가 보낸 채팅은 오른쪽에, 상대가 보낸 채팅은 왼쪽에 나타남.
+     - 이전 채팅 내용을 보고 있을 때 새로운 채팅이 올라오면 알림이 뜨며, 해당 알림을 클릭하면 가장 최근 채팅으로 이동함
+
+
+------------
+
+7. <h3 id="clubStory">북클럽 스토리</h3>
+
+![북클럽 스토리](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/13ClubStory.gif?raw=true)
+
+  **북클럽 스토리**  
+    
+   * 구현 기능 설명
+     - 사용자는 북클럽 스토리 페이지에서 해당 북클럽에 대한 상세한 내용을 확인할 수 있음.
+     - 알라딘 API를 사용해 읽을 책의 정보를 가져옴.
+     - 풀 캘린더 API를 사용해 북클럽 스케줄을 보여줌
+
+
+------------
+
+
+8. <h3 id="clubStory">내가 가입한 북클럽 조회</h3>
+
+![북클럽 스토리](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/13ClubStory.gif?raw=true)
+
+  **북클럽 스토리**  
+    
+   * 구현 기능 설명
+     - 사용자는 마이페이지에서 내가 가입한 북클럽을 조회할 수 있음.
+     - 기본 정렬은 북클럽 시작일 최신순이며, 마감일순으로 정렬 가능
+     - 기한이 종료된 북클럽은 회색 처리 
+     - 페이징 처리
+
+------------
+
+<p align="center">
+지금까지 읽어주셔서 감사합니다:)<br><br>
+추가적인 포트폴리오가 궁금하시다면 <br>
+[포트폴리오 링크](https://github.com/jess0402/Project) 를 클릭해주세요~
+</p>
+
 
