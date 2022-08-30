@@ -102,10 +102,10 @@
 
 
 * DB 설계<br>
-![bookie-project]()
+![bookie-project](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/images/erd0.png?raw=true)
 
 * 일정<br>
-![bookie-project]()
+![bookie-project](https://user-images.githubusercontent.com/84800644/187327684-4ed42084-88e8-4564-874d-23acd2853498.png)
 
 ------------
 
