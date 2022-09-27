@@ -22,7 +22,7 @@
         <li><a href="#clubMissionDo">북클럽 미션</a></li>
         <li><a href="#clubMissionCheck">관리자의 미션 확인</a></li>
         <li><a href="#clubChat">북클럽 채팅</a></li>
-        <li><a href="#clubMainPage">북클럽 메인페이지</a></li>
+        <li><a href="#clubDetail">북클럽 메인페이지</a></li>
         <li><a href="#clubStory">북클럽 스토리</a></li>
         <li><a href="#myClub">내가 가입한 북클럽 조회</a></li>
       </ul>
@@ -136,14 +136,7 @@
 
 2. <h3 id="clubList">북클럽 조회</h3>
 
-**북클럽 조회** 
- * 북클럽 리스트 조회
-  ![북클럽 리스트 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/8ClubList.gif?raw=true)
-
- * 북클럽 공고 조회
-  ![북클럽 공고 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/9ClubAnn.gif?raw=true)
-
-
+**북클럽 리스트 및 공고 조회** 
   * 구현 기능 설명
     - 현재 진행중인 북클럽 조회
     - 종료된 북클럽만을 조회 가능
@@ -155,6 +148,10 @@
     
     - 회원은 북클럽 공고에서 북클럽 신청/취소를 할 수 있음
       - 만약 회원의 포인트가 북클럽 디파짓보다 적으면 신청 불가능
+  
+|북클럽 리스트 조회|북클럽 공고 조회|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192654110-454d1d18-b2bf-42f7-9a92-4207ecd856de.jpg" width="500" height="900"/> | <img src="https://user-images.githubusercontent.com/84800644/192654084-6d4e3073-2811-478a-b91d-e59fec577b91.jpg" width="500" height="1100"/> |
 
 ------------
 
@@ -199,7 +196,7 @@
 
 ------------
 
-5. <h3 id="clubMission">북클럽 미션</h3>
+5. <h3 id="clubMissionDo">북클럽 미션</h3>
 
 **북클럽 미션** 
   * 사용자의 미션 제출
@@ -210,6 +207,11 @@
      -	각 미션을 누르면 해당 미션의 내용이 반영된 모달이 열림
      -	모달에서 미션에 맞게 미션을 수행한 뒤 (첨부파일 첨부 or 내용 작성) 제출을 누르면 모달이 닫기며, 수행 전이었던 미션의 상태가 승인 대기중으로 바뀜. 
 
+     
+     
+ ------------
+
+6. <h3 id="clubMissionCheck">관리자의 미션 확인</h3>    
      
   * 관리자의 미션 확인
      ![북클럽 관리자 미션 확인](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/7MissionApprove.gif?raw=true)
@@ -222,7 +224,7 @@
 
 ------------
 
-6. <h3 id="clubChat">북클럽 채팅</h3>
+7. <h3 id="clubChat">북클럽 채팅</h3>
 
 ![북클럽 채팅](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/4clubChat.gif?raw=true)
 
@@ -236,46 +238,47 @@
 
 ------------
 
-7. <h3 id="clubDetail">북클럽 메인페이지</h3>
+8. <h3 id="clubDetail">북클럽 메인페이지</h3>
 
-![북클럽 채팅](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/4clubChat.gif?raw=true)
+    **북클럽 메인페이지**  
+     * 구현 기능 설명
+       - 사용자는 북클럽 메인페이지에서 해당 북클럽에 대한 간략한 내용을 확인할 수 있음.
+       
+|북클럽 메인페이지|
+|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192655376-3f071733-647b-479e-8636-4fe9d71a58ea.jpg" width="550" height="900"/> |
 
-  **북클럽 채팅**  
-    
-   * 구현 기능 설명
-     - 실시간으로 접속된 사람들과 채팅할 수 있음
-     - 내가 보낸 채팅은 오른쪽에, 상대가 보낸 채팅은 왼쪽에 나타남.
-     - 이전 채팅 내용을 보고 있을 때 새로운 채팅이 올라오면 알림이 뜨며, 해당 알림을 클릭하면 가장 최근 채팅으로 이동함
+------------
+
+9. <h3 id="clubStory">북클럽 스토리</h3>
+
+    **북클럽 스토리**  
+
+     * 구현 기능 설명
+       - 사용자는 북클럽 스토리 페이지에서 해당 북클럽에 대한 상세한 내용을 확인할 수 있음.
+       - 알라딘 API를 사용해 읽을 책의 정보를 가져옴.
+       - 풀 캘린더 API를 사용해 북클럽 스케줄을 보여줌
+
+|북클럽 스토리|
+|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192655059-70bb8062-a949-498f-be45-5b0baa6794fa.jpg" width="550" height="1400"/> |
 
 
 ------------
 
-7. <h3 id="clubStory">북클럽 스토리</h3>
 
-![북클럽 스토리](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/13ClubStory.gif?raw=true)
+10. <h3 id="myClub">내가 가입한 북클럽 조회</h3>
 
-  **북클럽 스토리**  
-    
-   * 구현 기능 설명
-     - 사용자는 북클럽 스토리 페이지에서 해당 북클럽에 대한 상세한 내용을 확인할 수 있음.
-     - 알라딘 API를 사용해 읽을 책의 정보를 가져옴.
-     - 풀 캘린더 API를 사용해 북클럽 스케줄을 보여줌
-
-
-------------
-
-
-8. <h3 id="clubStory">내가 가입한 북클럽 조회</h3>
-
-![북클럽 스토리](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/13ClubStory.gif?raw=true)
-
-  **북클럽 스토리**  
-    
-   * 구현 기능 설명
-     - 사용자는 마이페이지에서 내가 가입한 북클럽을 조회할 수 있음.
-     - 기본 정렬은 북클럽 시작일 최신순이며, 마감일순으로 정렬 가능
-     - 기한이 종료된 북클럽은 회색 처리 
-     - 페이징 처리
+    **내가 가입한 북클럽 조회**  
+     * 구현 기능 설명
+       - 사용자는 마이페이지에서 내가 가입한 북클럽을 조회할 수 있음.
+       - 기본 정렬은 북클럽 시작일 최신순이며, 마감일순으로 정렬 가능
+       - 기한이 종료된 북클럽은 회색 처리 
+       - 페이징 처리
+     
+|내가 가입한 북클럽 조회|
+|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192654885-c69b60f7-ea5c-4de0-84c4-13dee752aaaa.jpg" width="550" height="850"/> |
 
 ------------
 
