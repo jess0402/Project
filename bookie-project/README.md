@@ -171,9 +171,20 @@
 
 4. <h3 id="clubBoard">북클럽 게시판</h3>
 
-**북클럽 게시판** 
-  * 게시판 목록 조회
-     ![북클럽 게시판 목록 조회](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/12clubBoardList.gif?raw=true)
+    **북클럽 게시판**
+     
+      * 구현 기능 설명
+        - 북클럽 게시판 글 작성 & 수정 & 삭제 가능
+        - 글 작성시 첨부파일 등록 가능
+        - 글 작성란 썸머노트 API 사용
+        - 글에 댓글 작성 & 수정 & 삭제 가능
+        - 댓글에 대댓글 작성 & 수정 & 삭제 가능
+        - 기본 정렬은 작성일 최신순이며, 오래된 순을 선택하면 작성일 오래된 순으로 정렬됨.
+        - 페이징 처리
+
+  |북클럽 게시판 목록조회|
+  |---|
+  | <img src="https://user-images.githubusercontent.com/84800644/192657215-e63fd0c8-00d0-4fe9-af50-91652af1e8e0.jpg" width="550" height="600"/> |
      
   * 게시판 글 작성 
      ![북클럽 게시판 글 작성](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/14ClubBoardEnroll.gif?raw=true)
@@ -183,15 +194,6 @@
   
   * 게시판 댓글/대댓글
     ![북클럽 게시판 댓글/대댓글](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/5Comment.gif?raw=true)
-
-  * 구현 기능 설명
-    - 북클럽 게시판 글 작성 & 수정 & 삭제 가능
-    - 글 작성시 첨부파일 등록 가능
-    - 글 작성란 썸머노트 API 사용
-    - 글에 댓글 작성 & 수정 & 삭제 가능
-    - 댓글에 대댓글 작성 & 수정 & 삭제 가능
-    - 기본 정렬은 작성일 최신순이며, 오래된 순을 선택하면 작성일 오래된 순으로 정렬됨.
-    - 페이징 처리
 
 
 ------------
