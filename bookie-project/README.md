@@ -114,16 +114,22 @@
 1. <h3 id="enrollClub">북클럽 등록</h3>
 
 **관리자의 북클럽 등록** 
- * 북클럽 기본정보 및 책 등록(알라딘 API)
-  ![기본정보 및 책 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/1enrollClubInfo.gif?raw=true)
-  
-  * 북클럽 미션 등록
-  ![북클럽 미션 등록](https://github.com/jess0402/Project/blob/master/bookie-project/src/main/webapp/resources/gifs/2enrollClubMission.gif?raw=true)
-   
   * 구현 기능 설명
     - 책 추가시 알라딘 API를 통해 베스트셀러 목록을 불러옴
     - 키워드 / 제목 / 저자 / 출판사로 검색타입 설정하여 책 검색 가능
     - 등록한 미션 수정 및 삭제 가능
+    
+|제목 및 내용 등록|기본정보 등록(알라딘 API)|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192518311-7fdc323c-3e82-4748-92a4-114ac612df1c.JPG" width="500" height="320"/> | <img src="https://user-images.githubusercontent.com/84800644/192518374-cdf8d370-b448-4253-b779-f5c7a7dca8b0.JPG" width="500" height="320"/> |
+
+|책 등록 모달|책 등록|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192519250-2fcf0c62-a98b-4ace-8f74-4d4f7d9184aa.JPG" width="500" height="700"/> | <img src="https://user-images.githubusercontent.com/84800644/192519182-ebcaa88b-4840-4f00-8ba4-fb07031cc37d.JPG" width="500" height="320"/> |
+
+|미션 등록 모달|미션 등록|
+|---|---|
+| <img src="https://user-images.githubusercontent.com/84800644/192519479-c7412110-2793-4a89-adc2-958b5de90edb.png" width="500" height="550"/> | <img src="https://user-images.githubusercontent.com/84800644/192519527-543a3eff-4472-4739-a5e5-bf9aa39c0c00.JPG" width="500" height="320"/> |
 
 
 ------------
