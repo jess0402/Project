@@ -74,7 +74,8 @@
 ![audition-project](https://raw.githubusercontent.com/jess0402/Project/master/audition-project/src/main/webapp/images/project-img/erd.png)
 
 * 일정<br>
-![audition-project]()
+<img width="960" alt="semi_wbs" src="https://user-images.githubusercontent.com/84800644/192662983-56e461f7-1034-4225-bfde-6097d09cb30c.png">
+
 
 ------------
 
